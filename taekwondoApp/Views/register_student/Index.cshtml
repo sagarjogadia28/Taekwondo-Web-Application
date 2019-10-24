@@ -1,0 +1,49 @@
+﻿@model IEnumerable<taekwondoApp.Models.register_student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Students' Classes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by email: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Email Id", "Index", new { sortOrder = ViewBag.EmailSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student_class.class_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.student.email_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student_class.getDetails)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.register_id, stId = item.student_id, classId = item.class_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.register_id, stId = item.student_id, classId = item.class_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.register_id, stId = item.student_id, classId = item.class_id })
+        </td>
+    </tr>
+    }
+
+</table>

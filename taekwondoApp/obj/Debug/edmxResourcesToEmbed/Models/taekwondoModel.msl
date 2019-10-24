@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="taekwondoDBModelStoreContainer" CdmEntityContainer="taekwondoDBEntities">
+    <EntitySetMapping Name="attendances">
+      <EntityTypeMapping TypeName="taekwondoDBModel.attendance">
+        <MappingFragment StoreEntitySet="attendance">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="class_id" ColumnName="class_id" />
+          <ScalarProperty Name="class_date" ColumnName="class_date" />
+          <ScalarProperty Name="did_attend" ColumnName="did_attend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventories">
+      <EntityTypeMapping TypeName="taekwondoDBModel.inventory">
+        <MappingFragment StoreEntitySet="inventory">
+          <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="cost_price" ColumnName="cost_price" />
+          <ScalarProperty Name="sell_price" ColumnName="sell_price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="money_tracking">
+      <EntityTypeMapping TypeName="taekwondoDBModel.money_tracking">
+        <MappingFragment StoreEntitySet="money_tracking">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+          <ScalarProperty Name="date_of_purchase" ColumnName="date_of_purchase" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parents">
+      <EntityTypeMapping TypeName="taekwondoDBModel.parent">
+        <MappingFragment StoreEntitySet="parent">
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="father_name" ColumnName="father_name" />
+          <ScalarProperty Name="mother_name" ColumnName="mother_name" />
+          <ScalarProperty Name="parent_email_id" ColumnName="parent_email_id" />
+          <ScalarProperty Name="parent_phone_number" ColumnName="parent_phone_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ranks">
+      <EntityTypeMapping TypeName="taekwondoDBModel.rank">
+        <MappingFragment StoreEntitySet="rank">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="belt_color" ColumnName="belt_color" />
+          <ScalarProperty Name="date_awarded" ColumnName="date_awarded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="register_student">
+      <EntityTypeMapping TypeName="taekwondoDBModel.register_student">
+        <MappingFragment StoreEntitySet="register_student">
+          <ScalarProperty Name="register_id" ColumnName="register_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="class_id" ColumnName="class_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="taekwondoDBModel.student">
+        <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="date_of_joining" ColumnName="date_of_joining" />
+          <ScalarProperty Name="mobile_number" ColumnName="mobile_number" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="student_class">
+      <EntityTypeMapping TypeName="taekwondoDBModel.student_class">
+        <MappingFragment StoreEntitySet="student_class">
+          <ScalarProperty Name="class_id" ColumnName="class_id" />
+          <ScalarProperty Name="class_level" ColumnName="class_level" />
+          <ScalarProperty Name="class_on" ColumnName="class_on" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

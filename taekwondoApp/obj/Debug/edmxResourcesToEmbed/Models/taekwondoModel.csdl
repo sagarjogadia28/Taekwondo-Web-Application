@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="taekwondoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="attendance">
+    <Key>
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="class_id" />
+      <PropertyRef Name="class_date" />
+    </Key>
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="class_id" Type="Int32" Nullable="false" />
+    <Property Name="class_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="did_attend" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="student_class" Relationship="Self.FK_attendance_class" FromRole="attendance" ToRole="student_class" />
+    <NavigationProperty Name="student" Relationship="Self.FK_attendance_student" FromRole="attendance" ToRole="student" />
+  </EntityType>
+  <EntityType Name="inventory">
+    <Key>
+      <PropertyRef Name="inventory_id" />
+    </Key>
+    <Property Name="inventory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cost_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sell_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="quantity" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <NavigationProperty Name="money_tracking" Relationship="Self.FK_money_tracking_inventory" FromRole="inventory" ToRole="money_tracking" />
+  </EntityType>
+  <EntityType Name="money_tracking">
+    <Key>
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="inventory_id" />
+    </Key>
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="inventory_id" Type="Int32" Nullable="false" />
+    <Property Name="date_of_purchase" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="inventory" Relationship="Self.FK_money_tracking_inventory" FromRole="money_tracking" ToRole="inventory" />
+    <NavigationProperty Name="student" Relationship="Self.FK_money_tracking_student" FromRole="money_tracking" ToRole="student" />
+  </EntityType>
+  <EntityType Name="parent">
+    <Key>
+      <PropertyRef Name="parent_id" />
+    </Key>
+    <Property Name="parent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="father_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mother_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="parent_email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parent_phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="students" Relationship="Self.FK_student_parent" FromRole="parent" ToRole="student" />
+  </EntityType>
+  <EntityType Name="rank">
+    <Key>
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="belt_color" />
+    </Key>
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="belt_color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date_awarded" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="student" Relationship="Self.FK_rank_student" FromRole="rank" ToRole="student" />
+  </EntityType>
+  <EntityType Name="register_student">
+    <Key>
+      <PropertyRef Name="register_id" />
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="class_id" />
+    </Key>
+    <Property Name="register_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="class_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="student_class" Relationship="Self.FK_register_student_register_student" FromRole="register_student" ToRole="student_class" />
+    <NavigationProperty Name="student" Relationship="Self.FK_register_student_student" FromRole="register_student" ToRole="student" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_of_joining" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="mobile_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="postal_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+    <Property Name="parent_id" Type="Int32" />
+    <NavigationProperty Name="attendances" Relationship="Self.FK_attendance_student" FromRole="student" ToRole="attendance" />
+    <NavigationProperty Name="money_tracking" Relationship="Self.FK_money_tracking_student" FromRole="student" ToRole="money_tracking" />
+    <NavigationProperty Name="parent" Relationship="Self.FK_student_parent" FromRole="student" ToRole="parent" />
+    <NavigationProperty Name="ranks" Relationship="Self.FK_rank_student" FromRole="student" ToRole="rank" />
+    <NavigationProperty Name="register_student" Relationship="Self.FK_register_student_student" FromRole="student" ToRole="register_student" />
+  </EntityType>
+  <EntityType Name="student_class">
+    <Key>
+      <PropertyRef Name="class_id" />
+    </Key>
+    <Property Name="class_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="class_level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="class_on" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="end_time" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="attendances" Relationship="Self.FK_attendance_class" FromRole="student_class" ToRole="attendance" />
+    <NavigationProperty Name="register_student" Relationship="Self.FK_register_student_register_student" FromRole="student_class" ToRole="register_student" />
+  </EntityType>
+  <Association Name="FK_attendance_class">
+    <End Role="student_class" Type="Self.student_class" Multiplicity="1" />
+    <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student_class">
+        <PropertyRef Name="class_id" />
+      </Principal>
+      <Dependent Role="attendance">
+        <PropertyRef Name="class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_attendance_student">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="attendance">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_money_tracking_inventory">
+    <End Role="inventory" Type="Self.inventory" Multiplicity="1" />
+    <End Role="money_tracking" Type="Self.money_tracking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inventory">
+        <PropertyRef Name="inventory_id" />
+      </Principal>
+      <Dependent Role="money_tracking">
+        <PropertyRef Name="inventory_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_money_tracking_student">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="money_tracking" Type="Self.money_tracking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="money_tracking">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_student_parent">
+    <End Role="parent" Type="Self.parent" Multiplicity="0..1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="parent">
+        <PropertyRef Name="parent_id" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="parent_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rank_student">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="rank" Type="Self.rank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="rank">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_register_student_register_student">
+    <End Role="student_class" Type="Self.student_class" Multiplicity="1" />
+    <End Role="register_student" Type="Self.register_student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student_class">
+        <PropertyRef Name="class_id" />
+      </Principal>
+      <Dependent Role="register_student">
+        <PropertyRef Name="class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_register_student_student">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="register_student" Type="Self.register_student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="register_student">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="taekwondoDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="attendances" EntityType="Self.attendance" />
+    <EntitySet Name="inventories" EntityType="Self.inventory" />
+    <EntitySet Name="money_tracking" EntityType="Self.money_tracking" />
+    <EntitySet Name="parents" EntityType="Self.parent" />
+    <EntitySet Name="ranks" EntityType="Self.rank" />
+    <EntitySet Name="register_student" EntityType="Self.register_student" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <EntitySet Name="student_class" EntityType="Self.student_class" />
+    <AssociationSet Name="FK_attendance_class" Association="Self.FK_attendance_class">
+      <End Role="student_class" EntitySet="student_class" />
+      <End Role="attendance" EntitySet="attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_attendance_student" Association="Self.FK_attendance_student">
+      <End Role="student" EntitySet="students" />
+      <End Role="attendance" EntitySet="attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_money_tracking_inventory" Association="Self.FK_money_tracking_inventory">
+      <End Role="inventory" EntitySet="inventories" />
+      <End Role="money_tracking" EntitySet="money_tracking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_money_tracking_student" Association="Self.FK_money_tracking_student">
+      <End Role="student" EntitySet="students" />
+      <End Role="money_tracking" EntitySet="money_tracking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_student_parent" Association="Self.FK_student_parent">
+      <End Role="parent" EntitySet="parents" />
+      <End Role="student" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rank_student" Association="Self.FK_rank_student">
+      <End Role="student" EntitySet="students" />
+      <End Role="rank" EntitySet="ranks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_register_student_register_student" Association="Self.FK_register_student_register_student">
+      <End Role="student_class" EntitySet="student_class" />
+      <End Role="register_student" EntitySet="register_student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_register_student_student" Association="Self.FK_register_student_student">
+      <End Role="student" EntitySet="students" />
+      <End Role="register_student" EntitySet="register_student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,40 @@
+﻿@model taekwondoApp.Models.attendance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>attendance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.student.email_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student.email_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.student_class.getDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_class.getDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.did_attend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.did_attend)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.student_id, classId = Model.class_id, dt = Model.class_date }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

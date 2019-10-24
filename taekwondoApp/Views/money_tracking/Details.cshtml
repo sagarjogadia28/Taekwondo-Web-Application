@@ -1,0 +1,51 @@
+﻿@model taekwondoApp.Models.money_tracking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>money_tracking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student.email_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student.email_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inventory.category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inventory.category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_of_purchase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_of_purchase)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.student_id, invId = Model.inventory_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

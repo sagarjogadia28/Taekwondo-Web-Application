@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>TAEKWONDO DATABASE</h1>
+    <p class="lead">Master Stephanos's database to keep track his hundreds of students.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Students", "Index", "students")</h2>
+        <p>
+            Link to manage student details.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Parents", "Index", "parents")</h2>
+        <p>Link to manage parents details.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Student class", "Index", "student_class")</h2>
+        <p>Link to manage class details.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Registered student", "Index", "register_student")</h2>
+        <p>
+            Link to manage students' registration details.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Attendances", "Index", "attendances")</h2>
+        <p>Link to manage students' attendance details.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Inventories", "Index", "inventories")</h2>
+        <p>Link to manage inventories details.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Money tracking", "Index", "money_tracking")</h2>
+        <p>
+            Link to manage money tracking details.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Ranks", "Index", "ranks")</h2>
+        <p>Link to manage students' rank details.</p>
+    </div>
+</div>

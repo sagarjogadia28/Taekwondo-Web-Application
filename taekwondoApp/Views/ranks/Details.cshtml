@@ -1,0 +1,42 @@
+﻿@model taekwondoApp.Models.rank
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>rank</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student.email_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student.email_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.belt_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.belt_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_awarded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_awarded)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.student_id, color = Model.belt_color }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<taekwondoApp.Models.rank>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ranks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Email Id", "Index", new { sortOrder = ViewBag.EmailSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Belt Color", "Index", new { sortOrder = ViewBag.BeltSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Date Awarded", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.student.email_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.belt_color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_awarded)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.student_id, color = item.belt_color }) |
+                @Html.ActionLink("Details", "Details", new { id = item.student_id, color = item.belt_color }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.student_id, color = item.belt_color })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<taekwondoApp.Models.student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Students</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.middle_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_of_birth)
+        </th>
+        <th>
+            @Html.ActionLink("Joining Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mobile_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postal_code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parent.parent_email_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.middle_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_of_birth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_of_joining)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mobile_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postal_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parent.parent_email_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.student_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.student_id })
+            </td>
+        </tr>
+    }
+
+</table>

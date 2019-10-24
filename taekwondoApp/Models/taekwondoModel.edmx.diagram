@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d39483ed385643d28c9fb84b21d129b8" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="taekwondoDBModel.attendance" Width="1.5" PointX="2.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.inventory" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.money_tracking" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.parent" Width="1.5" PointX="7.875" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.rank" Width="1.5" PointX="8.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.register_student" Width="1.5" PointX="7" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.student" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taekwondoDBModel.student_class" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="taekwondoDBModel.FK_attendance_class" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_attendance_student" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_money_tracking_inventory" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_money_tracking_student" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_student_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_rank_student" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_register_student_register_student" ManuallyRouted="false" />
+        <AssociationConnector Association="taekwondoDBModel.FK_register_student_student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

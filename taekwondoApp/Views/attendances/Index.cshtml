@@ -1,0 +1,61 @@
+﻿@model IEnumerable<taekwondoApp.Models.attendance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Attendance</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by email: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Email Id", "Index", new { sortOrder = ViewBag.EmailSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student_class.getDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.class_date)
+        </th>
+        <th>
+            @Html.ActionLink("Did Attend", "Index", new { sortOrder = ViewBag.AttendSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.student.email_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student_class.getDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.class_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.did_attend)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.student_id, classId = item.class_id, dt = item.class_date }) |
+            @Html.ActionLink("Details", "Details", new { id = item.student_id, classId = item.class_id, dt = item.class_date }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.student_id, classId = item.class_id, dt = item.class_date })
+        </td>
+    </tr>
+    }
+
+</table>

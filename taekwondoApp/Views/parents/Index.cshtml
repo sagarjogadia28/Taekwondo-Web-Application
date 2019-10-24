@@ -1,0 +1,51 @@
+﻿@model IEnumerable<taekwondoApp.Models.parent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Parents</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.father_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mother_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parent_email_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parent_phone_number)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.father_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mother_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_email_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_phone_number)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.parent_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.parent_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.parent_id })
+        </td>
+    </tr>
+}
+
+</table>
